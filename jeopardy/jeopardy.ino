@@ -4,13 +4,12 @@
 #define FIRST_COLOR_PIN 8
 #define INPUT_PIN_GROUP_SIZE 2
 
-#define OPCODE_RESET 0x01
-#define OPCODE_PING 0x02
-#define OPCODE_PONG 0x03
-#define OPCODE_BUZZ 0x04
-#define OPCODE_SET_COLOR 0x05
-#define OPCODE_CONNECTED 0x06
-#define OPCODE_DISCONNECTED 0x07
+#define OPCODE_PING 0x01
+#define OPCODE_PONG 0x02
+#define OPCODE_BUZZ 0x03
+#define OPCODE_SET_COLOR 0x04
+#define OPCODE_CONNECTED 0x05
+#define OPCODE_DISCONNECTED 0x06
 
 bool buzzerConnected[MAX_BUZZERS];
 int oldBuzzerState[MAX_BUZZERS];
@@ -140,11 +139,6 @@ void loop() {
         analogWrite(FIRST_COLOR_PIN + buzzer_id * 3 + 0, Serial.read());
         analogWrite(FIRST_COLOR_PIN + buzzer_id * 3 + 1, Serial.read());
         analogWrite(FIRST_COLOR_PIN + buzzer_id * 3 + 2, Serial.read());
-        break;
-      default:
-      case OPCODE_RESET:
-        Serial.read();
-        // TODO Handle reset command
         break;
     }
   }
